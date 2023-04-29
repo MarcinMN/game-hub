@@ -1,3 +1,7 @@
+/* Switch for dark/light mode toggle. Returns HStack component containing a Switch
+and Text label. When Switch isChecked, page displays dark mode. Any time the Switch
+toggles, toggleColorMode is used to flip between light and dark mode.  */
+
 import { HStack, Switch, Text, useColorMode } from "@chakra-ui/react";
 
 const ColorModeSwitch = () => {

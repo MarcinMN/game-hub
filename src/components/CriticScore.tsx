@@ -1,3 +1,7 @@
+/* Display the critic score in the GameCard. Returns Badge component showing the critic score.
+Prop is score, which is a number value. Score value is used to determine the colorScheme of the
+score displayed on the screen.  */
+
 import { Badge } from "@chakra-ui/react";
 
 interface Props {

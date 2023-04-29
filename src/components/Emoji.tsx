@@ -1,3 +1,7 @@
+/* Display an emoji based on rating in the GameCard. Returns Image component showing the emoji
+Prop is rating, which is a number value. Rating value is used to determine the emoji displayed 
+on the screen. emojiMap was created to collect the props for the different emojis. */
+
 import bullsEye from "../assets/bulls-eye.webp";
 import thumbsUp from "../assets/thumbs-up.webp";
 import meh from "../assets/meh.webp";
