@@ -1,3 +1,9 @@
+/* Display a card that has game information -- game image, name, platforms, 
+critic score, and an emoji based on rating. Prop is a Game object from the
+Game interface in useGames. Returns a Card component. Within the Card is an
+Image, a CardBody that has an HStack containing PlatformIconList and CriticScore, 
+a Heading that has the Game name and emoji. */
+
 import { Game } from "../hooks/useGames";
 import { Card, CardBody, HStack, Heading, Image } from "@chakra-ui/react";
 import PlatformIconList from "./PlatformIconList";
