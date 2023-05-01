@@ -1,7 +1,12 @@
+/* Generic hook used for retrieving information from the API. May be used
+by useGames, useGenres, or usePlatforms hooks. */
+
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { AxiosRequestConfig, CanceledError } from "axios";
 
+/* Generic object to fetch data from the API. Data could be of type 
+Game, Genre, or Platform. */
 interface FetchResponse<T> {
   count: number;
   results: T[];

@@ -1,3 +1,6 @@
+/* A grid that is used to display multiple GameCard components. Prop is a 
+GameQuery object from App.tsx.  */
+
 import { SimpleGrid, Text } from "@chakra-ui/react";
 import useGames, { Platform } from "../hooks/useGames";
 import GameCard from "./GameCard";
