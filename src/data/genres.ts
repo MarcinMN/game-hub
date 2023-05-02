@@ -1,3 +1,6 @@
+/* Genre information from the API. Saved locally so that the Genre list in the UI can
+be loaded immediately rather than having to wait for the API call. */
+
 export default [
   {
     id: 4,

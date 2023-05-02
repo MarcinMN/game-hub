@@ -1,3 +1,6 @@
+/* A navigation bar component that contains a logo, a search box, and a switch for 
+dark mode.  */
+
 import { HStack, Image } from "@chakra-ui/react";
 import logo from "../assets/logo.webp";
 import ColorModeSwitch from "./ColorModeSwitch";
