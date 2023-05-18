@@ -1,0 +1,37 @@
+GameHub Data Flow
+
+api-client.ts (services):
+* Uses axios to make a call to the api at api.raw.io
+* Default export is an Axios Instance
+
+useData.ts (hooks):
+* ???
+
+useGames.ts (hooks):
+* Imports GameQuery from App.tsx to use as props
+* Exports interfaces "Platform" and "Game"
+* Calls useData<Game> and passes:
+    - The endpoint "/games"
+    - The params genres, parent_platforms, ordering, and search (obtained from GameQuery)
+    - The dependency of [gameQuery]
+* Stores results in useGames, which is the default export
+
+usePlatforms.ts (hooks):
+* Interface called "Platform" that is NOT exported
+* Calls useData<Platform> and passes:
+    - The endpoint "/platforms/lists/parents"
+* Stores results in usePlatforms, which is the default export
+
+useGenres.ts (hooks):
+* Imports genres from ../data/genres to use as props
+* Exports interface "Genre"
+* Creates obejct with genre data, isLoading value of false, and error value of null (static load)
+* Stores results in useGenres, which is the default export.
+
+App.tsx (components):
+* Exports interface called "GameQuery"
+* useState hook set up to modify GameQuery
+* GameQuery can be set by NavBar when there is searchText
+* GameQuery can be set by GenreList when there is a genre selected
+* GameQuery can be set by PlatformSelector when there is a platform selected
+* GameQuery can be set by SortSelector when a sortOrder is selected.
