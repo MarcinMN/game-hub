@@ -32,6 +32,12 @@ App.tsx (components):
 * Exports interface called "GameQuery"
 * useState hook set up to modify GameQuery
 * GameQuery can be set by NavBar when there is searchText
-* GameQuery can be set by GenreList when there is a genre selected
-* GameQuery can be set by PlatformSelector when there is a platform selected
-* GameQuery can be set by SortSelector when a sortOrder is selected.
+* GameQuery can be set by GenreList when a genre is selected
+* GameQuery can be set by PlatformSelector when a platform is selected
+* GameQuery can be set by SortSelector when a sortOrder is selected
+
+NavBar.tsx (components):
+* Props Interface has function "onSearch" with parameter "searchText".  It returns void.
+* onSearch prop is passed to SearchInput component in NavBar
+* Logo image file is taken from assets folder.
+
