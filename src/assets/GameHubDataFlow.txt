@@ -41,3 +41,10 @@ NavBar.tsx (components):
 * onSearch prop is passed to SearchInput component in NavBar
 * Logo image file is taken from assets folder.
 
+SearchInput.tsx (components):
+* Props Interface has function "onSearch" with parameter "searchText".  It returns void.
+* useRef hook set up to return an object of type HTMLInputElement. The object is stored in variable "ref"
+* When a search value is submitted, the current value of ref is used as the string parameter for onSearch.
+* Form onSubmit uses an IF statement to check if ref is null. If it is not, then onSearch is called with ref as parameter.
+* Chakra Input element has a ref prop that is set to {ref} for this to work.
+
