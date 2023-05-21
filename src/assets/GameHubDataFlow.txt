@@ -36,15 +36,33 @@ App.tsx (components):
 * GameQuery can be set by PlatformSelector when a platform is selected
 * GameQuery can be set by SortSelector when a sortOrder is selected
 
+GenreList.tsx (components):
+* Props Interface has function "onSelectGenre" with parameter "genre".  It returns void.
+* Props Interface also has variable "selectedGenre" which can be either a Genre or null.
+* Makes a call to useGenres to get genre data from the API.
+* When a genre is clicked, onSelectGenre in App.tsx is run using the string for the genre that was clicked.
+* A cropped image for the genre is retrieved using getCroppedImageUrl in image-url.ts.
+
 NavBar.tsx (components):
 * Props Interface has function "onSearch" with parameter "searchText".  It returns void.
 * onSearch prop is passed to SearchInput component in NavBar
 * Logo image file is taken from assets folder.
 
+PlatformSelector.tsx (components):
+* Props Interface has function "onSelectPlatform" with parameter "platform".  It returns void.
+* Props Interface also has variable "selectedPlatform" which can be either a Genre or null.
+* Makes a call to usePlatforms to get platform data form the API.
+* When a platform is selected, onSelectPlatform in App.tsx is run using the strong for the platform that was selected.
+
 SearchInput.tsx (components):
 * Props Interface has function "onSearch" with parameter "searchText".  It returns void.
 * useRef hook set up to return an object of type HTMLInputElement. The object is stored in variable "ref"
 * When a search value is submitted, the current value of ref is used as the string parameter for onSearch.
+* The searchText string is passed up to NavBar, and then up to App.tsx, where onSearch is run using the searchText.
 * Form onSubmit uses an IF statement to check if ref is null. If it is not, then onSearch is called with ref as parameter.
 * Chakra Input element has a ref prop that is set to {ref} for this to work.
 
+SortSelector.tsx (components):
+* Props Interface has function "onSelectSortOrder" with parameter "sortOrder".  It returns void.
+* Props Interface also has variable "selectedSortOrder" which is a string.
+* When a sort order is selected, onSelectSortOrder in App.tsx is run using the string for the sort order selected.
