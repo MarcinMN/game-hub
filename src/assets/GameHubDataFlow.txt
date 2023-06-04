@@ -36,33 +36,80 @@ App.tsx (components):
 * GameQuery can be set by PlatformSelector when a platform is selected
 * GameQuery can be set by SortSelector when a sortOrder is selected
 
-GenreList.tsx (components):
-* Props Interface has function "onSelectGenre" with parameter "genre".  It returns void.
-* Props Interface also has variable "selectedGenre" which can be either a Genre or null.
-* Makes a call to useGenres to get genre data from the API.
-* When a genre is clicked, onSelectGenre in App.tsx is run using the string for the genre that was clicked.
-* A cropped image for the genre is retrieved using getCroppedImageUrl in image-url.ts.
+   GameHeading.tsx (components):
+   * Props Interface has variable "gameQuery" which is a GameQuery object.
+   * Checks the "platform" and "genre" variables in gameQuery. If they are null, the default heading "Games"
+     is displayed. If either or both are not null, then the String value for platform and/or genre is appended
+     before the default heading. (e.g. Playstation Action Games)
 
-NavBar.tsx (components):
-* Props Interface has function "onSearch" with parameter "searchText".  It returns void.
-* onSearch prop is passed to SearchInput component in NavBar
-* Logo image file is taken from assets folder.
+   GenreList.tsx (components):
+   * Props Interface has function "onSelectGenre" with parameter "genre".  It returns void.
+   * Props Interface also has variable "selectedGenre" which can be either a Genre or null.
+   * Makes a call to useGenres to get genre data from the API.
+   * When a genre is clicked, onSelectGenre in App.tsx is run using the string for the genre that was clicked.
+   * A cropped image for the genre is retrieved using getCroppedImageUrl in image-url.ts.
 
-PlatformSelector.tsx (components):
-* Props Interface has function "onSelectPlatform" with parameter "platform".  It returns void.
-* Props Interface also has variable "selectedPlatform" which can be either a Genre or null.
-* Makes a call to usePlatforms to get platform data form the API.
-* When a platform is selected, onSelectPlatform in App.tsx is run using the strong for the platform that was selected.
+   SortSelector.tsx (components):
+   * Props Interface has function "onSelectSortOrder" with parameter "sortOrder".  It returns void.
+   * Props Interface also has variable "selectedSortOrder" which is a string.
+   * When a sort order is selected, onSelectSortOrder in App.tsx is run using the string for the sort order selected.
 
-SearchInput.tsx (components):
-* Props Interface has function "onSearch" with parameter "searchText".  It returns void.
-* useRef hook set up to return an object of type HTMLInputElement. The object is stored in variable "ref"
-* When a search value is submitted, the current value of ref is used as the string parameter for onSearch.
-* The searchText string is passed up to NavBar, and then up to App.tsx, where onSearch is run using the searchText.
-* Form onSubmit uses an IF statement to check if ref is null. If it is not, then onSearch is called with ref as parameter.
-* Chakra Input element has a ref prop that is set to {ref} for this to work.
+   PlatformSelector.tsx (components):
+   * Props Interface has function "onSelectPlatform" with parameter "platform".  It returns void.
+   * Props Interface also has variable "selectedPlatform" which can be either a Genre or null.
+   * Makes a call to usePlatforms to get platform data form the API.
+   * When a platform is selected, onSelectPlatform in App.tsx is run using the strong for the platform that was selected.
 
-SortSelector.tsx (components):
-* Props Interface has function "onSelectSortOrder" with parameter "sortOrder".  It returns void.
-* Props Interface also has variable "selectedSortOrder" which is a string.
-* When a sort order is selected, onSelectSortOrder in App.tsx is run using the string for the sort order selected.
+   NavBar.tsx (components):
+   * Props Interface has function "onSearch" with parameter "searchText".  It returns void.
+   * onSearch prop is passed to SearchInput component in NavBar
+   * Logo image file is taken from assets folder.
+
+      SearchInput.tsx (components):
+      * Props Interface has function "onSearch" with parameter "searchText".  It returns void.
+      * useRef hook set up to return an object of type HTMLInputElement. The object is stored in variable "ref"
+      * When a search value is submitted, the current value of ref is used as the string parameter for onSearch.
+      * The searchText string is passed up to NavBar, and then up to App.tsx, where onSearch is run using the searchText.
+      * Form onSubmit uses an IF statement to check if ref is null. If it is not, then onSearch is called with ref as parameter.
+      * Chakra Input element has a ref prop that is set to {ref} for this to work.
+
+      ColorModeSwitch.tsx (components):
+      * useColorMode is imported from Chakra.
+      * The useColorMode switch is set up with { toggleColorMode, colorMode }
+      * toggleColorMode is used to change between light and dark when switch is clicked
+
+   GameGrid.tsx (components):
+   * Props interface has variable "gameQuery" which is a GameQuery object.
+   * Makes a call to useGames with "gameQuery" as parameter to get game data from the API.
+   * useGames has a boolean "isLoading" for when the data is currently being collected. If isLoading is true, then GameGrid
+     displays some GameCard "skeletons" until the actual data is available to be displayed.
+   * Once the data is available, the GameCards can be loaded.  Note that there is a GameCardContainer component that holds
+     each GameCard component. So, GameGrid itself isn't handing the contents of the GameCards. Each "game" in the data is
+     mapped to a GameCardContainer and then the "game" data is passed to the GameCard component.
+
+      GameCardContainer.tsx (components):
+      * Props interface has variable "children" of type ReactNode.
+      * "children" is used here because the game data is being passed from GameGrid (parent to GameCardContainer) down to
+       GameCard (child of GameCardContainer).
+      * Renders a Box component that holds a GameCard component with the game data in it.
+
+      GameCardSkeleton.tsx (components):
+      * No props, variables or hooks.
+      * This components simply returns a Card component containing a Skelelton and Skeleton Text.
+      * Rendered in GameGrid while the real API data is loading.
+
+      GameCard.tsx (components):
+      * Props interface has variable "game" which is a Game object.
+      * Returns a Card object with all the game data contained in the Game object (title, image, platforms, etc).
+      * Some Game data is passed on to child components (CriticScore, PlatformIconList, Emoji).
+
+         CriticScore.tsx (components):
+         * Props interface has variable "score" of type number.
+         * "color" variable determine the color displayed based on the score.
+
+         PlatformIconList.tsx (components):
+         
+
+         Emoji.tsx (components):
+
+
